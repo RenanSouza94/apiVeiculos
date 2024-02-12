@@ -9,7 +9,7 @@ public class Veiculo {
 	private String nome;
 	private String marca;
 	private String modelo;
-	private LocalDate dataFabricacao;
+	private Integer anoFabricacao;
 	private Double consumoMedioCidade;
 	private Double consumoMedioRodovia;
 	
@@ -37,12 +37,15 @@ public class Veiculo {
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
-	public LocalDate getDataFabricacao() {
-		return dataFabricacao;
+
+	public Integer getAnoFabricacao() {
+		return anoFabricacao;
 	}
-	public void setDataFabricacao(LocalDate dataFabricacao) {
-		this.dataFabricacao = dataFabricacao;
+
+	public void setAnoFabricacao(Integer anoFabricacao) {
+		this.anoFabricacao = anoFabricacao;
 	}
+
 	public Double getConsumoMedioCidade() {
 		return consumoMedioCidade;
 	}

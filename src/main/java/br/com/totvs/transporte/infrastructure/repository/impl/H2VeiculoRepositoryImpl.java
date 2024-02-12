@@ -9,6 +9,9 @@ import br.com.totvs.transporte.infrastructure.entity.VeiculoEntity;
 import br.com.totvs.transporte.infrastructure.repository.SpringDataVeiculoRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Component
 public class H2VeiculoRepositoryImpl implements VeiculoRepository{
 
@@ -23,6 +26,11 @@ public class H2VeiculoRepositoryImpl implements VeiculoRepository{
 		VeiculoEntity entity = repository.save(mapper.map(veiculo, VeiculoEntity.class));
 		veiculo.setId(entity.getId());
 		return veiculo;
+	}
+
+	@Override
+	public List<Veiculo> findAll() {
+		return Arrays.asList( mapper.map(repository.findAll(), Veiculo[].class));
 	}
 
 }

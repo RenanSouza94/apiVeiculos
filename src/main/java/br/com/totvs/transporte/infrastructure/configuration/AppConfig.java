@@ -13,6 +13,7 @@ public class AppConfig {
 	@Bean
 	public ModelMapper modelMapper() {
 		ModelMapper modelMapper = new ModelMapper();
+		modelMapper.addMappings(MappingToModel.mapPrevisaoGastosToResponse);
 		return modelMapper;
 	}
 
