@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "a00a2401-3c6d-4afa-bab5-6a14c6455f27",
+		"name": "Veículos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3806233"
+	},
+	"item": [
+		{
+			"name": "Cadastrar Veículo",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"Bravo\",\r\n    \"marca\": \"Ford\",\r\n    \"modelo\": \"Sedan\",\r\n    \"anoFabricacao\": 2015,\r\n    \"consumoMedioCidade\": 5,\r\n    \"consumoMedioRodovia\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Valor Gasto",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"valorGasolina\": 5.5,\r\n    \"totalKmCidade\": 60.5,\r\n    \"totalKmRodovia\": 99\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos/calcularGastos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos",
+						"calcularGastos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

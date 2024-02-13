@@ -1,12 +1,11 @@
 package br.com.totvs.transporte.infrastructure.repository.impl;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import br.com.totvs.transporte.domain.entity.Veiculo;
 import br.com.totvs.transporte.domain.port.repository.VeiculoRepository;
 import br.com.totvs.transporte.infrastructure.entity.VeiculoEntity;
 import br.com.totvs.transporte.infrastructure.repository.SpringDataVeiculoRepository;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;

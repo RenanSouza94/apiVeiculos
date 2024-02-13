@@ -1,11 +1,10 @@
 package br.com.totvs.transporte.infrastructure.entity;
 
-import java.util.Date;
-import java.util.UUID;
-
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
+
+import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "veiculo")

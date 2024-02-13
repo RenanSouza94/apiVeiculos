@@ -1,11 +1,10 @@
 package br.com.totvs.transporte.infrastructure.repository;
 
-import java.util.Optional;
-import java.util.UUID;
-
+import br.com.totvs.transporte.infrastructure.entity.VeiculoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.totvs.transporte.infrastructure.entity.VeiculoEntity;
+import java.util.Optional;
+import java.util.UUID;
 
 public interface SpringDataVeiculoRepository extends JpaRepository<VeiculoEntity, UUID>{
 

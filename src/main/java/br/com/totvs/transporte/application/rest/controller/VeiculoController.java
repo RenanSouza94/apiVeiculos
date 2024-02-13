@@ -1,11 +1,13 @@
 package br.com.totvs.transporte.application.rest.controller;
 
+import br.com.totvs.transporte.application.rest.input.NovoVeiculoRequest;
 import br.com.totvs.transporte.application.rest.input.PrevisaoGastosRequest;
 import br.com.totvs.transporte.application.rest.output.PrevisaoGastosResponse;
-
 import br.com.totvs.transporte.domain.entity.PrevisaoGastos;
+import br.com.totvs.transporte.domain.entity.Veiculo;
 import br.com.totvs.transporte.domain.exception.PrevisaoGastosException;
 import br.com.totvs.transporte.domain.exception.VeiculoException;
+import br.com.totvs.transporte.domain.port.usecase.VeiculoUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -18,10 +20,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import br.com.totvs.transporte.application.rest.input.NovoVeiculoRequest;
-import br.com.totvs.transporte.domain.entity.Veiculo;
-import br.com.totvs.transporte.domain.port.usecase.VeiculoUseCase;
 
 import java.util.Arrays;
 import java.util.List;

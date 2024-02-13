@@ -1,7 +1,6 @@
 package br.com.totvs.transporte.infrastrucutre.repository;
 
 import br.com.totvs.transporte.domain.entity.Veiculo;
-import br.com.totvs.transporte.infrastructure.entity.VeiculoEntity;
 import br.com.totvs.transporte.infrastructure.repository.SpringDataVeiculoRepository;
 import br.com.totvs.transporte.infrastructure.repository.impl.H2VeiculoRepositoryImpl;
 import jakarta.persistence.EntityManager;

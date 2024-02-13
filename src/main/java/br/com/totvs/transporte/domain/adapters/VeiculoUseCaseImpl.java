@@ -8,7 +8,6 @@ import br.com.totvs.transporte.domain.port.repository.VeiculoRepository;
 import br.com.totvs.transporte.domain.port.usecase.VeiculoUseCase;
 import br.com.totvs.transporte.util.DataUtil;
 
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.*;
 
