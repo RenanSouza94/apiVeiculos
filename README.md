@@ -9,12 +9,14 @@
 * Swagger
 * Spring Boot 3.1.3
 * IDE IntelliJ
+* Git
 
 ## Como executar o projeto
-<p>1 - Acesse a pasta do projeto pela linha de comando;</p>
-<p>2 - Execute o comando "mvn clean package";</p>
-<p>3 - Acesse a pasta "target";</p>
-<p>4 - Execute o comando "java -jar transporte-1.0.0.jar".</p>
+<p>1 - Abra a linha de comando e clone o projeto em sua máquina usando o comando "git clone https://github.com/RenanSouza94/apiVeiculos.git";</p>
+<p>2 - Acesse a pasta do projeto pela linha de comando;</p>
+<p>3 - Execute o comando "mvn clean package";</p>
+<p>4 - Acesse a pasta "target";</p>
+<p>5 - Execute o comando "java -jar transporte-1.0.0.jar".</p>
 
 ## Visualizar detalhes da API
 <p>Com a aplicação rodando em ambiente local, acesse "http://localhost:8080/swagger-ui/index.html#" para visualizar os detalhes de cada API desenvolvida</p>
