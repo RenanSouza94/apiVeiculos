@@ -10,22 +10,24 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import br.com.totvs.transporte.application.rest.input.NovoVeiculoRequest;
 import br.com.totvs.transporte.domain.entity.Veiculo;
 import br.com.totvs.transporte.domain.port.usecase.VeiculoUseCase;
 
-import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 @Tag(name = "Api de cadastro de veículos e cálculo de gastos")
 @RestController
+@Validated
 @RequestMapping(path = "/veiculos", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 public class VeiculoController  {
 
@@ -34,8 +36,10 @@ public class VeiculoController  {
 	
 	@Autowired
 	private ModelMapper mapper;
-	@ApiResponses(value = { @ApiResponse(responseCode = "201", description = "CREATED") })
-	@Operation(summary = "Cadastra um novo veículo")
+	@ApiResponses(value = { @ApiResponse(responseCode = "201", description = "Cadastro realizado com sucesso"),
+							@ApiResponse(responseCode = "400", description = "Falha na validação"),
+							@ApiResponse(responseCode = "500", description = "Erro interno")})
+	@Operation(summary = "Cadastra um novo veículo", method = "POST")
 	@PostMapping
 	public ResponseEntity<String> cadastrarVeiculo(@RequestBody @Valid NovoVeiculoRequest novoVeiculoRequest){
 		try {
@@ -48,14 +52,16 @@ public class VeiculoController  {
 		}
 	}
 
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "OK") })
-	@Operation(summary = "Calculo o gasto de combustível dos veículos com base na distancia e valor da gasolina")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Cálculo efetuado com sucesso"),
+			@ApiResponse(responseCode = "400", description = "Falha na validação"),
+			@ApiResponse(responseCode = "500", description = "Erro interno")})
+	@Operation(summary = "Caáculo o gasto de combustível dos veículos com base na distancia e valor da gasolina")
 	@GetMapping(value = "/calcularGastos")
 	public ResponseEntity<?> calcularGastos(@RequestBody @Valid PrevisaoGastosRequest request){
 		try {
 			List<PrevisaoGastos> previsaoGastosList = veiculoUseCase.calcularPrevisaoGastosVeiculos(request.getValorGasolina(), request.getTotalKmCidade(), request.getTotalKmRodovia());
 			return ResponseEntity.status(HttpStatus.OK).body( Arrays.asList( mapper.map(previsaoGastosList, PrevisaoGastosResponse[].class)));
-		} catch(PrevisaoGastosException e){
+		} catch(PrevisaoGastosException | VeiculoException e){
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		} catch(Exception e){
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

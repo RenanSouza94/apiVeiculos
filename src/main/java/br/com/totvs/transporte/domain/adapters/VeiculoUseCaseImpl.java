@@ -8,10 +8,9 @@ import br.com.totvs.transporte.domain.port.repository.VeiculoRepository;
 import br.com.totvs.transporte.domain.port.usecase.VeiculoUseCase;
 import br.com.totvs.transporte.util.DataUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.util.*;
 
 public class VeiculoUseCaseImpl implements VeiculoUseCase{
 
@@ -20,6 +19,8 @@ public class VeiculoUseCaseImpl implements VeiculoUseCase{
 	public VeiculoUseCaseImpl(VeiculoRepository repository) {
 		this.repository = repository;
 	}
+
+	private static final DecimalFormat df = new DecimalFormat("0.00");
 	
 	@Override
 	public void cadastrarVeiculo(Veiculo veiculo) {
@@ -28,6 +29,7 @@ public class VeiculoUseCaseImpl implements VeiculoUseCase{
 		if(veiculoOptional.isPresent()){
 			throw new VeiculoException("Esse veículo já foi cadastrado no dia "+ DataUtil.dateToString( veiculoOptional.get().getCriadoEm()));
 		}
+		veiculo.setCriadoEm(new Date());
 		repository.cadastrarVeiculo(veiculo);
 	}
 
@@ -55,7 +57,7 @@ public class VeiculoUseCaseImpl implements VeiculoUseCase{
 
 		Double qtdTotalCombustivel = qtdCombustivelCidade + qtdCombustivelRodovia;
 		Double valorTotalCombustivel = calcularValorTotalCombustivel(qtdTotalCombustivel, valorCombustivel);
-		return new PrevisaoGastos(veiculo, qtdTotalCombustivel, valorTotalCombustivel);
+		return new PrevisaoGastos(veiculo, df.format( qtdTotalCombustivel), df.format(valorTotalCombustivel));
 
 	}
 

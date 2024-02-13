@@ -2,24 +2,24 @@ package br.com.totvs.transporte.domain.entity;
 
 public class PrevisaoGastos {
 
-    public PrevisaoGastos(Veiculo veiculo, Double qtdLitrosCombustivelGasto, Double valorTotalCombustivelGasto){
+    public PrevisaoGastos(Veiculo veiculo, String qtdLitrosCombustivelGasto, String valorTotalCombustivelGasto){
         this.veiculo = veiculo;
         this.qtdLitrosCombustivelGasto = qtdLitrosCombustivelGasto;
         this.valorTotalCombustivelGasto = valorTotalCombustivelGasto;
     }
     private Veiculo veiculo;
-    private Double qtdLitrosCombustivelGasto;
-    private Double valorTotalCombustivelGasto;
+    private String qtdLitrosCombustivelGasto;
+    private String valorTotalCombustivelGasto;
 
     public Veiculo getVeiculo() {
         return veiculo;
     }
 
-    public Double getQtdLitrosCombustivelGasto() {
+    public String getQtdLitrosCombustivelGasto() {
         return qtdLitrosCombustivelGasto;
     }
 
-    public Double getValorTotalCombustivelGasto() {
+    public String getValorTotalCombustivelGasto() {
         return valorTotalCombustivelGasto;
     }
 }

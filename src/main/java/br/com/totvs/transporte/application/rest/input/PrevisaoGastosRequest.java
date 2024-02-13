@@ -1,9 +1,9 @@
 package br.com.totvs.transporte.application.rest.input;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 
 @Getter
 public class PrevisaoGastosRequest {

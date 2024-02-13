@@ -16,7 +16,6 @@ public class VeiculoEntity {
 	@GeneratedValue
 	@Column(name = "id", columnDefinition = "uuid")
 	private UUID id;
-	@CreatedDate
 	private Date criadoEm;
 	@Column(nullable = false)
 	private String nome;

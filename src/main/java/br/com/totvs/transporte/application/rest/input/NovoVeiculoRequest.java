@@ -1,9 +1,10 @@
 package br.com.totvs.transporte.application.rest.input;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+
 
 @Data
 public class NovoVeiculoRequest {
@@ -14,7 +15,6 @@ public class NovoVeiculoRequest {
 	private String marca;
 	@NotBlank(message = "O atributo modelo é obrigatório")
 	private String modelo;
-	@NotBlank(message = "O atributo anoFabricacao é obrigatório")
 	@Min(value = 1886, message = "Ano de fabricação inválido")
 	private Integer anoFabricacao;
 	@Min(value = 0, message = "Consumo inválido")
