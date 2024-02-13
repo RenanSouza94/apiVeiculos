@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class H2VeiculoRepositoryImpl implements VeiculoRepository{
@@ -32,5 +33,11 @@ public class H2VeiculoRepositoryImpl implements VeiculoRepository{
 	public List<Veiculo> findAll() {
 		return Arrays.asList( mapper.map(repository.findAll(), Veiculo[].class));
 	}
+
+	@Override
+	public Optional<Veiculo> findVeiculo(Veiculo veiculo) {
+		Optional<VeiculoEntity> veiculoEntity = repository.findByNomeAndMarcaAndModeloAndAnoFabricacao(veiculo.getNome(), veiculo.getMarca(), veiculo.getModelo(), veiculo.getAnoFabricacao());
+        return veiculoEntity.map(entity -> mapper.map(entity, Veiculo.class));
+    }
 
 }

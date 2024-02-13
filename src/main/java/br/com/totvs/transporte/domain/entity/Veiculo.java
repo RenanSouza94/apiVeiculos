@@ -1,6 +1,6 @@
 package br.com.totvs.transporte.domain.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.UUID;
 
 public class Veiculo {
@@ -12,6 +12,8 @@ public class Veiculo {
 	private Integer anoFabricacao;
 	private Double consumoMedioCidade;
 	private Double consumoMedioRodovia;
+
+	private Date criadoEm;
 	
 	public UUID getId() {
 		return id;
@@ -58,6 +60,12 @@ public class Veiculo {
 	public void setConsumoMedioRodovia(Double consumoMedioRodovia) {
 		this.consumoMedioRodovia = consumoMedioRodovia;
 	}
-	
-	
+
+	public Date getCriadoEm() {
+		return criadoEm;
+	}
+
+	public void setCriadoEm(Date criadoEm) {
+		this.criadoEm = criadoEm;
+	}
 }
